@@ -2,6 +2,8 @@ plugins {
 	java
 	id("org.springframework.boot") version "4.0.5"
 	id("io.spring.dependency-management") version "1.1.7"
+	id("com.diffplug.spotless") version "8.4.0"
+	`maven-publish`
 }
 
 group = "com.ecommerce"
@@ -13,7 +15,14 @@ java {
 	}
 }
 
+spotless {
+	java {
+		googleJavaFormat()
+	}
+}
+
 repositories {
+	mavenLocal()
 	mavenCentral()
 }
 
@@ -27,6 +36,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	implementation("com.ecommerce:shared-common:1.0.0-SNAPSHOT")
 
 	compileOnly("org.projectlombok:lombok")
 	testCompileOnly("org.projectlombok:lombok")

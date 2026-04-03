@@ -1,0 +1,57 @@
+package com.ecommerce.product.entity;
+
+import com.ecommerce.common.jpa.BaseEntity;
+import com.ecommerce.product.model.ProductAttribute;
+import com.ecommerce.product.model.ProductImage;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+@Entity
+@Table(name = "products")
+@Data
+@EqualsAndHashCode(callSuper = true)
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Product extends BaseEntity {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
+
+  @Column(nullable = false, length = 255)
+  private String name;
+
+  @Column(columnDefinition = "TEXT")
+  private String description;
+
+  @Column(nullable = false, precision = 10, scale = 2)
+  private BigDecimal basePrice;
+
+  private UUID categoryId;
+
+  @Column(length = 100)
+  private String brand;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  @Column(columnDefinition = "JSONB")
+  private ProductImage imageUrls;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  @Column(columnDefinition = "JSONB")
+  private List<ProductAttribute> attributes;
+}
