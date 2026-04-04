@@ -15,10 +15,18 @@ public interface ProductMapper {
 
   @Mapping(target = "isActive", ignore = true)
   @Mapping(target = "createdAt", ignore = true)
+  @Mapping(target = "updatedAt", ignore = true)
+  @Mapping(target = "createdBy", ignore = true)
+  @Mapping(target = "updatedBy", ignore = true)
+  @Mapping(target = "version", ignore = true)
   Product toEntity(ProductDto dto);
 
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   @Mapping(target = "isActive", ignore = true)
   @Mapping(target = "createdAt", ignore = true)
+  @Mapping(target = "updatedAt", ignore = true)
+  @Mapping(target = "createdBy", ignore = true)
+  @Mapping(target = "updatedBy", ignore = true)
+  @Mapping(target = "version", ignore = true)
   void updateEntityFromDto(ProductDto dto, @MappingTarget Product entity);
 }
