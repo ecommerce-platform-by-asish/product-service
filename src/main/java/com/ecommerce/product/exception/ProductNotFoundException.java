@@ -7,10 +7,10 @@ import org.springframework.http.HttpStatus;
 public class ProductNotFoundException extends BaseException {
 
   public ProductNotFoundException(UUID id) {
-    super("Product not found with id: " + id, HttpStatus.NOT_FOUND);
+    super("Product not found with id: " + id, ProductErrorCode.PRODUCT_NOT_FOUND);
   }
 
   public ProductNotFoundException(UUID id, Throwable cause) {
-    super("Product not found with id: " + id, HttpStatus.NOT_FOUND, cause);
+    super("Product not found with id: " + id, ProductErrorCode.PRODUCT_NOT_FOUND, cause);
   }
 }
