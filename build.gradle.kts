@@ -8,6 +8,7 @@ plugins {
 
 group = "com.ecommerce"
 version = "0.0.1-SNAPSHOT"
+description = "Product Service for Ecommerce App"
 
 java {
 	toolchain {
@@ -40,6 +41,7 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
 	implementation("com.ecommerce:shared-common:1.0.0-SNAPSHOT")
+	implementation("com.ecommerce:shared-security:1.0.0-SNAPSHOT")
 
 	implementation("org.mapstruct:mapstruct:1.6.3")
 	compileOnly("org.projectlombok:lombok")
@@ -52,4 +54,8 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.named("check") {
+	dependsOn("spotlessCheck")
 }
