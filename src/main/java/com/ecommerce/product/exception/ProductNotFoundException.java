@@ -1,16 +1,18 @@
 package com.ecommerce.product.exception;
 
-import com.ecommerce.common.exception.BaseException;
+import com.common.exception.BaseException;
+import java.io.Serial;
 import java.util.UUID;
-import org.springframework.http.HttpStatus;
 
 public class ProductNotFoundException extends BaseException {
 
+  @Serial private static final long serialVersionUID = 1L;
+
   public ProductNotFoundException(UUID id) {
-    super("Product not found with id: " + id, HttpStatus.NOT_FOUND);
+    super("Product not found with id: " + id, ProductStatusCode.PRODUCT_NOT_FOUND);
   }
 
   public ProductNotFoundException(UUID id, Throwable cause) {
-    super("Product not found with id: " + id, HttpStatus.NOT_FOUND, cause);
+    super("Product not found with id: " + id, ProductStatusCode.PRODUCT_NOT_FOUND, cause);
   }
 }

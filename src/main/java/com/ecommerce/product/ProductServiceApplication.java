@@ -1,12 +1,12 @@
 package com.ecommerce.product;
 
-import com.ecommerce.common.boot.EcomBootApplication;
+import com.common.boot.BaseSpringBootApplication;
 import org.springframework.boot.SpringApplication;
 
-@EcomBootApplication(enableOpenApi = true, enableActuator = true, enableCaching = true)
+@BaseSpringBootApplication(enableOpenApi = true, enableActuator = true, enableCaching = true)
 public class ProductServiceApplication {
 
-  static void main(String[] args) {
+  public static void main(String[] args) {
     SpringApplication.run(ProductServiceApplication.class, args);
   }
 }

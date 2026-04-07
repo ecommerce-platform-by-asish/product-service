@@ -1,11 +1,12 @@
 package com.ecommerce.product.entity;
 
-import com.ecommerce.common.jpa.BaseEntity;
+import com.common.persistence.BaseEntity;
 import com.ecommerce.product.model.ProductAttribute;
 import com.ecommerce.product.model.ProductImage;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import java.io.Serial;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
@@ -25,6 +26,8 @@ import org.hibernate.type.SqlTypes;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product extends BaseEntity {
+
+  @Serial private static final long serialVersionUID = 1L;
 
   @Column(nullable = false)
   private String name;
