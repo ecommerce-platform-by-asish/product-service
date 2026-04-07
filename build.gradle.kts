@@ -39,8 +39,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-	implementation("com.common:shared-common:1.0.0-SNAPSHOT")
-	implementation("com.common:shared-security:1.0.0-SNAPSHOT")
+	implementation("com.app:shared-common:1.0.0-SNAPSHOT")
+	implementation("com.app:shared-security:1.0.0-SNAPSHOT")
 
 	implementation("org.mapstruct:mapstruct:1.6.3")
 	compileOnly("org.projectlombok:lombok")

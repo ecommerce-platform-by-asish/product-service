@@ -1,7 +1,7 @@
-package com.ecommerce.product.mapper;
+package com.app.product.mapper;
 
-import com.ecommerce.product.dto.ProductDto;
-import com.ecommerce.product.entity.Product;
+import com.app.product.dto.ProductDto;
+import com.app.product.entity.Product;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,10 +1,10 @@
-package com.ecommerce.product.service;
+package com.app.product.service;
 
-import com.common.web.dto.PageResponse;
-import com.ecommerce.product.dto.ProductDto;
-import com.ecommerce.product.exception.ProductNotFoundException;
-import com.ecommerce.product.mapper.ProductMapper;
-import com.ecommerce.product.repository.ProductRepository;
+import com.app.common.web.dto.PageResponse;
+import com.app.product.dto.ProductDto;
+import com.app.product.exception.ProductNotFoundException;
+import com.app.product.mapper.ProductMapper;
+import com.app.product.repository.ProductRepository;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
