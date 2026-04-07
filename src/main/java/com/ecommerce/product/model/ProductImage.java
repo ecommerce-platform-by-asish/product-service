@@ -17,6 +17,5 @@ public class ProductImage implements Serializable {
   @Serial private static final long serialVersionUID = 1L;
   private String thumbnail;
   private String primary;
-  @SuppressWarnings("serial")
   private List<String> gallery;
 }

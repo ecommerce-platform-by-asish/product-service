@@ -47,7 +47,6 @@ public class Product extends BaseEntity {
   @Column(columnDefinition = "JSONB")
   private ProductImage imageUrls;
 
-  @SuppressWarnings("serial")
   @JdbcTypeCode(SqlTypes.JSON)
   @Column(columnDefinition = "JSONB")
   private List<ProductAttribute> attributes;
