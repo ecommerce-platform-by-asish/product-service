@@ -1,6 +1,6 @@
 package com.ecommerce.product.service;
 
-import com.ecommerce.common.dto.PageResponse;
+import com.common.web.dto.PageResponse;
 import com.ecommerce.product.dto.ProductDto;
 import com.ecommerce.product.exception.ProductNotFoundException;
 import com.ecommerce.product.mapper.ProductMapper;
@@ -25,6 +25,7 @@ public class ProductService {
 
   @Transactional(readOnly = true)
   public PageResponse<ProductDto> getAllProducts(Pageable pageable) {
+    log.info("Fetching all products with pageable: {}", pageable);
     var page = productRepository.findByIsActiveTrue(pageable).map(productMapper::toDto);
     return PageResponse.of(page);
   }
