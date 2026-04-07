@@ -1,7 +1,7 @@
 package com.ecommerce.product.controller;
 
-import com.ecommerce.common.dto.ApiResponse;
-import com.ecommerce.common.dto.PageResponse;
+import com.common.web.dto.ApiResponse;
+import com.common.web.dto.PageResponse;
 import com.ecommerce.product.dto.ProductDto;
 import com.ecommerce.product.service.ProductService;
 import jakarta.validation.Valid;
