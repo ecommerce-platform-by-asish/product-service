@@ -39,7 +39,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-	implementation("com.common:shared-common:1.0.8-SNAPSHOT")
+	implementation("com.common:shared-common:1.0.0-SNAPSHOT")
 	implementation("com.common:shared-security:1.0.0-SNAPSHOT")
 
 	implementation("org.mapstruct:mapstruct:1.6.3")
@@ -60,8 +60,7 @@ tasks.named("check") {
 }
 
 tasks.withType<JavaCompile> {
-    options.compilerArgs.add("-Xlint:all")
-    options.compilerArgs.add("-Xlint:-processing")
+    options.compilerArgs.addAll(listOf("-Xlint:all", "-Xlint:-serial", "-Xlint:-processing"))
 }
 
 val stopApp by tasks.registering(Exec::class) {
