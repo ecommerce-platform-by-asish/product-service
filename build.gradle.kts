@@ -64,12 +64,9 @@ tasks.withType<JavaCompile> {
 }
 
 val stopApp by tasks.registering(Exec::class) {
-  group = "application"
-  description = "Stops any running application processes for this service."
-  commandLine(
-      "sh",
-      "-c",
-      "ps aux | grep 'bootRun' | grep '${project.name}' | grep -v grep | awk '{print $2}' | xargs kill -9 || true")
+	group = "application"
+	description = "Stops any running application processes for this service."
+	commandLine("sh", "-c", "ps aux | grep 'bootRun' | grep '${project.name}' | grep -v grep | awk '{print $2}' | xargs kill -9 || true")
 }
 
-tasks.named("build") { dependsOn(stopApp) }
+tasks.named("bootRun") { dependsOn(stopApp) }
