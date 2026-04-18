@@ -1,6 +1,6 @@
-package com.ecommerce.product.exception;
+package com.app.product.exception;
 
-import com.common.exception.BaseException;
+import com.app.common.exception.BaseException;
 import java.io.Serial;
 import java.util.UUID;
 

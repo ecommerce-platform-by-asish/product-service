@@ -1,4 +1,4 @@
-package com.ecommerce.product.model;
+package com.app.product.model;
 
 import java.io.Serial;
 import java.io.Serializable;

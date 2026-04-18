@@ -1,6 +1,6 @@
-package com.ecommerce.product.repository;
+package com.app.product.repository;
 
-import com.ecommerce.product.entity.Product;
+import com.app.product.entity.Product;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.domain.Page;

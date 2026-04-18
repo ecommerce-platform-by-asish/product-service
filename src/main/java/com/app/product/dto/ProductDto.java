@@ -1,7 +1,7 @@
-package com.ecommerce.product.dto;
+package com.app.product.dto;
 
-import com.ecommerce.product.model.ProductAttribute;
-import com.ecommerce.product.model.ProductImage;
+import com.app.product.model.ProductAttribute;
+import com.app.product.model.ProductImage;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

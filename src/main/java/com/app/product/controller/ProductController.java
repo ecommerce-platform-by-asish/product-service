@@ -1,9 +1,9 @@
-package com.ecommerce.product.controller;
+package com.app.product.controller;
 
-import com.common.web.dto.ApiResponse;
-import com.common.web.dto.PageResponse;
-import com.ecommerce.product.dto.ProductDto;
-import com.ecommerce.product.service.ProductService;
+import com.app.common.web.dto.ApiResponse;
+import com.app.common.web.dto.PageResponse;
+import com.app.product.dto.ProductDto;
+import com.app.product.service.ProductService;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.UUID;

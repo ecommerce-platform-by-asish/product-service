@@ -1,8 +1,8 @@
-package com.ecommerce.product.entity;
+package com.app.product.entity;
 
-import com.common.persistence.BaseEntity;
-import com.ecommerce.product.model.ProductAttribute;
-import com.ecommerce.product.model.ProductImage;
+import com.app.common.persistence.BaseEntity;
+import com.app.product.model.ProductAttribute;
+import com.app.product.model.ProductImage;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

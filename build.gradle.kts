@@ -39,8 +39,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-	implementation("com.common:shared-common:1.0.0-SNAPSHOT")
-	implementation("com.common:shared-security:1.0.0-SNAPSHOT")
+	implementation("com.app:shared-common:1.0.0-SNAPSHOT")
+	implementation("com.app:shared-security:1.0.0-SNAPSHOT")
 
 	implementation("org.mapstruct:mapstruct:1.6.3")
 	compileOnly("org.projectlombok:lombok")
@@ -64,12 +64,9 @@ tasks.withType<JavaCompile> {
 }
 
 val stopApp by tasks.registering(Exec::class) {
-  group = "application"
-  description = "Stops any running application processes for this service."
-  commandLine(
-      "sh",
-      "-c",
-      "ps aux | grep 'bootRun' | grep '${project.name}' | grep -v grep | awk '{print $2}' | xargs kill -9 || true")
+	group = "application"
+	description = "Stops any running application processes for this service."
+	commandLine("sh", "-c", "ps aux | grep 'bootRun' | grep '${project.name}' | grep -v grep | awk '{print $2}' | xargs kill -9 || true")
 }
 
-tasks.named("build") { dependsOn(stopApp) }
+tasks.named("bootRun") { dependsOn(stopApp) }

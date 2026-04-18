@@ -1,6 +1,6 @@
-package com.ecommerce.product.exception;
+package com.app.product.exception;
 
-import com.common.exception.StatusCode;
+import com.app.common.exception.StatusCode;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
