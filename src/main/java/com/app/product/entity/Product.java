@@ -1,6 +1,6 @@
 package com.app.product.entity;
 
-import com.app.common.persistence.BaseEntity;
+import com.app.common.model.BaseEntity;
 import com.app.product.model.ProductAttribute;
 import com.app.product.model.ProductImage;
 import jakarta.persistence.Column;

@@ -1,6 +1,6 @@
 package com.app.product.service;
 
-import com.app.common.web.dto.PageResponse;
+import com.app.common.dto.PageResponse;
 import com.app.product.dto.ProductDto;
 import com.app.product.exception.ProductNotFoundException;
 import com.app.product.mapper.ProductMapper;

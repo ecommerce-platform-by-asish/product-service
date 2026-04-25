@@ -1,9 +1,10 @@
 package com.app.product.controller;
 
-import com.app.common.web.dto.ApiResponse;
-import com.app.common.web.dto.PageResponse;
+import com.app.common.dto.ApiResponse;
+import com.app.common.dto.PageResponse;
 import com.app.product.dto.ProductDto;
 import com.app.product.service.ProductService;
+import com.app.security.annotation.PublicEndpoint;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.UUID;
@@ -28,6 +29,7 @@ public class ProductController {
 
   private final ProductService productService;
 
+  @PublicEndpoint
   @GetMapping
   public ResponseEntity<PageResponse<ProductDto>> getAllProducts(
       @PageableDefault(size = 20) Pageable pageable) {
@@ -46,7 +48,7 @@ public class ProductController {
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
-            .buildAndExpand(created.getId())
+            .buildAndExpand(created.id())
             .toUri();
     return ResponseEntity.created(location).body(ApiResponse.ok(created));
   }
