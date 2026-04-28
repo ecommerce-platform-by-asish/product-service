@@ -2,33 +2,33 @@ server:
   port: 8082
   servlet:
     context-path: /api/products
-  tomcat:
-    redirect-context-root: false
 
 spring:
+  application:
+    name: product-service
   threads:
     virtual:
       enabled: true
-  application:
-    name: product-service
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start-only
   datasource:
-    url: jdbc:postgresql://localhost:5432/product_db
+    url: jdbc:postgresql://localhost:5433/product_db
     username: ecommerce
     password: admin
     driver-class-name: org.postgresql.Driver
   flyway:
     enabled: false
+#    locations: classpath:db/migration
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        format_sql: true
-        highlight_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 logging:
   level:
-    com.app: debug
-    org.hibernate.SQL: debug
-    org.hibernate.orm.jdbc.bind: trace
+    org.flywaydb: DEBUG
