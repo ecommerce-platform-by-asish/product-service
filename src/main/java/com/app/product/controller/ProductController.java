@@ -4,9 +4,8 @@ import com.app.common.dto.ApiResponse;
 import com.app.common.dto.PageResponse;
 import com.app.product.dto.ProductDto;
 import com.app.product.service.ProductService;
-import com.app.security.annotation.PublicEndpoint;
+import com.app.security.annotation.SecurityRules;
 import jakarta.validation.Valid;
-import java.net.URI;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
@@ -30,11 +29,11 @@ public class ProductController {
 
   private final ProductService productService;
 
-  @PublicEndpoint
+  @SecurityRules.PublicEndpoint
   @GetMapping({"", "/"})
-  public ResponseEntity<PageResponse<ProductDto>> getAllProducts(
+  public ResponseEntity<ApiResponse<PageResponse<ProductDto>>> getAllProducts(
       @ParameterObject @PageableDefault Pageable pageable) {
-    return ResponseEntity.ok(productService.getAllProducts(pageable));
+    return ApiResponse.ok(productService.getAllProducts(pageable)).toEntity();
   }
 
   @GetMapping("/{id}")
@@ -46,7 +45,7 @@ public class ProductController {
   public ResponseEntity<ApiResponse<ProductDto>> createProduct(
       @Valid @RequestBody ProductDto productDto) {
     var created = productService.createProduct(productDto);
-    URI location =
+    var location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
             .buildAndExpand(created.id())
