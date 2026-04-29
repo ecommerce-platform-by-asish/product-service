@@ -16,7 +16,6 @@ dependencies {
 
     implementation(libs.bundles.springweb)
     implementation(libs.bundles.databasejpa)
-    implementation("org.springframework.boot:spring-boot-starter-flyway")
     implementation(libs.bundles.lombokmapstruct)
 
     implementation("com.app:shared-common:1.0.0-SNAPSHOT")
@@ -31,6 +30,13 @@ dependencies {
     compileOnly(libs.lombok)
     annotationProcessor(platform(libs.sb.bom))
     annotationProcessor(libs.bundles.lombokmapstruct)
+    annotationProcessor(libs.sb.configuration.processor)
+
+    testImplementation(libs.bundles.testbundle)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 tasks.withType<JavaCompile>().configureEach {

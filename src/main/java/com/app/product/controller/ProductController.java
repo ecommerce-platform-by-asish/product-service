@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -30,15 +31,15 @@ public class ProductController {
   private final ProductService productService;
 
   @PublicEndpoint
-  @GetMapping
+  @GetMapping({"", "/"})
   public ResponseEntity<PageResponse<ProductDto>> getAllProducts(
-      @PageableDefault(size = 20) Pageable pageable) {
+      @ParameterObject @PageableDefault Pageable pageable) {
     return ResponseEntity.ok(productService.getAllProducts(pageable));
   }
 
   @GetMapping("/{id}")
   public ResponseEntity<ApiResponse<ProductDto>> getProductById(@PathVariable UUID id) {
-    return ResponseEntity.ok(ApiResponse.ok(productService.getProductById(id)));
+    return ApiResponse.ok(productService.getProductById(id)).toEntity();
   }
 
   @PostMapping
@@ -56,7 +57,7 @@ public class ProductController {
   @PutMapping("/{id}")
   public ResponseEntity<ApiResponse<ProductDto>> updateProduct(
       @PathVariable UUID id, @Valid @RequestBody ProductDto productDto) {
-    return ResponseEntity.ok(ApiResponse.ok(productService.updateProduct(id, productDto)));
+    return ApiResponse.ok(productService.updateProduct(id, productDto)).toEntity();
   }
 
   @DeleteMapping("/{id}")
