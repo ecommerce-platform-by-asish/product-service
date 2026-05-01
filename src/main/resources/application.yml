@@ -24,19 +24,11 @@ spring:
     url: jdbc:postgresql://localhost:5433/product_db
     username: ecommerce
     password: admin
-  mvc:
-    servlet:
-      load-on-startup: 1
   jpa:
-    defer-datasource-initialization: false
-    open-in-view: false
     hibernate:
       ddl-auto: update
   flyway:
     enabled: true
     baseline-on-migrate: true
 
-logging:
-  level:
-    root: INFO
-    com.app: DEBUG
+

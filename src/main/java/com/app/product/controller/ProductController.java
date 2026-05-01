@@ -31,18 +31,18 @@ public class ProductController {
 
   @SecurityRules.PublicEndpoint
   @GetMapping({"", "/"})
-  public ResponseEntity<ApiResponse<PageResponse<ProductDto>>> getAllProducts(
+  public PageResponse<ProductDto> getAllProducts(
       @ParameterObject @PageableDefault Pageable pageable) {
-    return ApiResponse.ok(productService.getAllProducts(pageable)).toEntity();
+    return productService.getAllProducts(pageable);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<ApiResponse<ProductDto>> getProductById(@PathVariable UUID id) {
-    return ApiResponse.ok(productService.getProductById(id)).toEntity();
+  public ProductDto getProductById(@PathVariable UUID id) {
+    return productService.getProductById(id);
   }
 
   @PostMapping
-  public ResponseEntity<ApiResponse<ProductDto>> createProduct(
+  public ResponseEntity<ProductDto> createProduct(
       @Valid @RequestBody ProductDto productDto) {
     var created = productService.createProduct(productDto);
     var location =
@@ -50,13 +50,13 @@ public class ProductController {
             .path("/{id}")
             .buildAndExpand(created.id())
             .toUri();
-    return ResponseEntity.created(location).body(ApiResponse.ok(created));
+    return ResponseEntity.created(location).body(created);
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<ApiResponse<ProductDto>> updateProduct(
+  public ProductDto updateProduct(
       @PathVariable UUID id, @Valid @RequestBody ProductDto productDto) {
-    return ApiResponse.ok(productService.updateProduct(id, productDto)).toEntity();
+    return productService.updateProduct(id, productDto);
   }
 
   @DeleteMapping("/{id}")
