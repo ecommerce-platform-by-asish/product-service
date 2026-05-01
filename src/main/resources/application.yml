@@ -3,7 +3,6 @@ server:
   servlet:
     context-path: /api/products
 
-debug: true
 
 app:
   openapi:
@@ -15,6 +14,9 @@ app:
 spring:
   application:
     name: product-service
+  docker:
+    compose:
+      enabled: false
   threads:
     virtual:
       enabled: true
@@ -22,8 +24,11 @@ spring:
     url: jdbc:postgresql://localhost:5433/product_db
     username: ecommerce
     password: admin
-    driver-class-name: org.postgresql.Driver
+  mvc:
+    servlet:
+      load-on-startup: 1
   jpa:
+    defer-datasource-initialization: false
     open-in-view: false
     hibernate:
       ddl-auto: update
