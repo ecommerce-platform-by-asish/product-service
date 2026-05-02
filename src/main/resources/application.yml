@@ -10,6 +10,9 @@ app:
     title: "Product Service API"
     description: "Product Management Service"
     version: "1.0.0"
+  security:
+    jwt:
+      jwk-set-uri: 'http://localhost:8081/api/auth/.well-known/jwks.json'
 
 spring:
   application:
@@ -30,5 +33,4 @@ spring:
   flyway:
     enabled: true
     baseline-on-migrate: true
-
 
