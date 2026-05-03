@@ -33,7 +33,7 @@ public class ProductService {
   @Transactional(readOnly = true)
   @Cacheable(value = "product", key = "#id")
   public ProductDto getProductById(UUID id) {
-    log.debug("Cache miss for product: {}", id);
+    log.info("Cache miss for product: {}", id);
     return productRepository
         .findByIdAndIsActiveTrue(id)
         .map(productMapper::toDto)
@@ -44,9 +44,8 @@ public class ProductService {
   @CachePut(value = "product", key = "#result.id")
   public ProductDto createProduct(ProductDto productDto) {
     var product = productMapper.toEntity(productDto);
-    product.setIsActive(true); // Explicitly set it even though default is true
-    var savedProduct = productRepository.save(product);
-    return productMapper.toDto(savedProduct);
+    product.setIsActive(true);
+    return productMapper.toDto(productRepository.save(product));
   }
 
   @Transactional
@@ -56,11 +55,8 @@ public class ProductService {
         productRepository
             .findByIdAndIsActiveTrue(id)
             .orElseThrow(() -> new ProductNotFoundException(id));
-
     productMapper.updateEntityFromDto(productDto, product);
-    var updatedProduct = productRepository.save(product);
-
-    return productMapper.toDto(updatedProduct);
+    return productMapper.toDto(productRepository.save(product));
   }
 
   @Transactional

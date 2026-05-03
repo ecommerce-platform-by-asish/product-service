@@ -22,10 +22,10 @@ dependencies {
 
     implementation(libs.springdoc.openapi.webmvc)
     implementation(libs.reactor.core)
+    implementation(libs.sb.starter.data.redis)
 
     developmentOnly(platform(libs.sb.bom))
     developmentOnly(libs.sb.docker.compose)
-    developmentOnly(libs.sb.devtools)
 
     compileOnly(libs.lombok)
     annotationProcessor(platform(libs.sb.bom))

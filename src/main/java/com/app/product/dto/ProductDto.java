@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
@@ -20,4 +21,5 @@ public record ProductDto(
     UUID categoryId,
     String brand,
     ProductImage imageUrls,
-    List<ProductAttribute> attributes) {}
+    List<ProductAttribute> attributes)
+    implements Serializable {}
